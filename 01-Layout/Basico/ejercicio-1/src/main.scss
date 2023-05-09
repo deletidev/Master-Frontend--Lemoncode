@@ -1,0 +1,105 @@
+//Esta parte la comento si pongo otra versión
+:root {
+  --hue: 160;
+}
+$hue: var(--hue);
+$sat: 70%;
+$light: 50%;
+$color: hsl($hue, $sat, $light);
+//
+
+//Versión 2 mixin y más especificidad, más compatibilidad navegadores antiguos
+// $color: hsl(172, 70%, 50%);
+$exponent: 10%;
+
+* {
+  box-sizing: content-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+//Esta parte la comento si pongo otra versión
+.container-1 {
+  --hue: 172;
+}
+
+.container-2 {
+  --hue: 100;
+}
+
+.container-3 {
+  --hue: 300;
+}
+//
+
+.box {
+  width: 6.25rem;
+  height: 6.25rem;
+  background-color: beige;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+//Esta parte la comento si pongo otra versión
+.base-color {
+  background-color: $color;
+}
+
+$i: 1;
+@while $i <= 4 {
+  .darken-#{$i} {
+    background-color: hsl($hue, $sat, $light - $exponent);
+  }
+  .lighten-#{$i} {
+    background-color: hsl($hue, $sat, $light + $exponent);
+  }
+  $exponent: $exponent + 10%;
+  $i: $i + 1;
+}
+//
+
+//Versión 2
+// @mixin colors($huenuevo: 1) {
+//   $color: change-color($color, $hue: $huenuevo);
+//   $i: 1;
+//   .base-color {
+//     background-color: $color;
+//   }
+//   @while $i <= 4 {
+//     .darken-#{$i} {
+//       background-color: darken($color, $exponent);
+//     }
+//     .lighten-#{$i} {
+//       background-color: lighten($color, $exponent);
+//     }
+//     $exponent: $exponent + 10%;
+//     $i: $i + 1;
+//   }
+// }
+
+// .container-1 {
+//   @include colors(172);
+// }
+// .container-2 {
+//   @include colors(100);
+// }
+// .container-3 {
+//   @include colors(300);
+// }
