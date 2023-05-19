@@ -1,0 +1,9 @@
+@use '../../mixins/responsive.scss' as *;
+
+.page-container {
+  flex-grow: 1;
+
+  @include responsive(tablet) {
+    display: flex;
+  }
+}

@@ -1,0 +1,21 @@
+@use '../../mixins/responsive.scss' as *;
+
+.card {
+  background-color: var(--color-bg-white);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  @include responsive(tablet) {
+    width: 220px;
+    flex-direction: column;
+    border: 1px solid var(--color-text-main);
+    justify-content: center;
+    text-align: center;
+    border-radius: 0.25rem;
+  }
+
+  &__img {
+    border-radius: 100%;
+  }
+}

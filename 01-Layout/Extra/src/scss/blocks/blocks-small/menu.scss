@@ -1,0 +1,49 @@
+@use '../../mixins/responsive.scss' as *;
+
+.menu {
+  background-color: var(--color-bg-secondary);
+  position: sticky;
+  top: 0;
+  @include responsive(tablet) {
+    width: 200px;
+    position: inherit;
+  }
+  &__container {
+    color: var(--color-text-secondary);
+    text-align: center;
+    @include responsive(tablet) {
+      position: sticky;
+      top: 0;
+      text-align: left;
+      width: 100%;
+    }
+  }
+  &__title {
+    display: none;
+    @include responsive(tablet) {
+      display: block;
+      text-transform: uppercase;
+      font-weight: var(--fw-600);
+      padding-top: var(--space-1);
+      padding-bottom: var(--space-1);
+      text-align: center;
+    }
+  }
+  &__items {
+    display: flex;
+    padding: var(--space-2);
+    gap: var(--space-3);
+    @include responsive(tablet) {
+      flex-direction: column;
+      padding: 0;
+      gap: 0;
+    }
+  }
+  &__item {
+    flex: 1;
+    color: var(--color-text-main);
+    padding: var(--space-2);
+    background-color: var(--color-bg-terciary);
+    border: solid 0.5px var(--color-border-menu);
+  }
+}

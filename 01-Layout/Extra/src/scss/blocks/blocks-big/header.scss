@@ -1,0 +1,23 @@
+@use '../../mixins/responsive.scss' as *;
+
+.header {
+  width: 100%;
+}
+
+.toolbar {
+  display: none;
+  @include responsive(tablet) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2);
+  }
+}
+
+.page-title {
+  color: var(--color-text-title);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-600);
+  background-color: var(--color-bg-title);
+  padding: var(--space-3);
+}

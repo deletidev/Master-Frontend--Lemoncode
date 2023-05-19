@@ -1,0 +1,31 @@
+/* En esta carpeta puedo tener separadas las variables */
+
+:root {
+  /* fuentes*/
+
+  --fs-base: 1rem;
+  --fs-md: 1.25rem;
+  --fs-xl: 1.5rem;
+  --ff-main: 'Source Sans Pro', sans-serif;
+  --fw-600: 600;
+
+  /* Colores*/
+
+  --color-text-main: hsl(65, 72%, 14%);
+  --color-text-title: hsl(53, 10%, 17%);
+  --color-text-secondary: hsl(58, 75%, 92%);
+  --color-bg-primary: hsl(0, 0%, 95%);
+  --color-bg-secondary: hsl(65, 72%, 14%);
+  --color-bg-title: hsl(65, 73%, 51%);
+  --color-bg-terciary: hsl(58, 75%, 92%);
+  --color-bg-white: hsl(0, 0%, 100%);
+  --color-border-menu: hsl(0, 1%, 64%);
+
+  /* Espacios*/
+  --flow: 1rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-4: 2rem;
+}
