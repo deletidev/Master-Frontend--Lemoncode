@@ -1,0 +1,17 @@
+$breakpoints: (
+  tablet: 768px,
+  laptop: 1024px,
+  desktop: 1280px
+);
+
+@mixin responsive($key) {
+  @if map-has-key($breakpoints, $key) {
+    @media screen and (min-width: map-get($breakpoints, $key)) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $key) {
+      @content;
+    }
+  }
+}

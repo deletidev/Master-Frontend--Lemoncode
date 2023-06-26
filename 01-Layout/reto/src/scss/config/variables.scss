@@ -1,0 +1,32 @@
+/* En esta carpeta puedo tener separadas las variables */
+@use '../mixins/responsive.scss' as *;
+
+:root {
+  /* fuentes*/
+
+  --fs-base: 1.2rem;
+  --fs-md: 1.9rem;
+  --fs-xl: 2rem;
+  @include responsive(tablet) {
+    --fs-base: 1.2rem;
+    --fs-md: 1.5rem;
+    --fs-xl: 1.5rem;
+  }
+  --ff-main: 'Jost', sans-serif;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-800: 800;
+
+  /* Colores*/
+
+  --color-text-main: hsl(0, 0%, 100%);
+  --color-bg-primary: #141414;
+
+  /* Espacios*/
+  --space-1: 0.4rem;
+  --space-2: 0.8rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+}
