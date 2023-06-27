@@ -9,6 +9,7 @@
   justify-content: space-between;
   @include responsive(desktop) {
     position: sticky;
+    z-index: 10;
     top: 0;
     left: 0;
     background-color: var(--color-bg-primary);
