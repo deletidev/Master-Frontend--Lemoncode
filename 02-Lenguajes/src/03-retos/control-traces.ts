@@ -14,11 +14,6 @@ const triggers = [
   async () => await showMessage([100, 'second'])
 ];
 
-// const run = triggers => {
-//   console.log('first');
-//   triggers.forEach(t => t());
-// };
-
 const run = async triggers => {
   // Con forEach no se hacerlo funcionar
   for (const elemento of triggers) {

@@ -30,5 +30,3 @@ console.log(surnameFunction.call(person));
 //la salida del código de arriba es Gonzalez, porque llamo a getsSurname pasando como argumento person,
 // y el surname de person es Gonzalez
 //this es person
-
-console.log(window);

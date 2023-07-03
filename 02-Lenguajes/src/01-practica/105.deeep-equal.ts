@@ -23,8 +23,6 @@ function isEqual(a, b) {
   if (keyA.every((element, index) => element === keyB[index])) {
     let valA = Object.values(a).sort();
     let valB = Object.values(b).sort();
-    console.log();
-    console.log(valB);
     if (valA.every((element, index) => element === valB[index])) {
       return true;
     } else {

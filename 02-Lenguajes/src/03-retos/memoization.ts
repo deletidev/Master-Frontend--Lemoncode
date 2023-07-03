@@ -6,12 +6,15 @@ console.log('************** CHALLENGES 4 *********************');
 Implementa un mecanismo de _memoización_ para funciones costosas y tipalo con TypeScript.
  La memoización optimiza sucesivas llamadas del siguiente modo: */
 
-const expensiveFunction = () => {
+const expensiveFunction = (): number => {
   console.log('Una única llamada');
   return 3.1415;
 };
 
-const memoize = memorizar => memorizar();
+const memoize = <T>(funcionAGuardar: () => T): (() => T) => {
+  const memo = funcionAGuardar();
+  return () => memo;
+};
 
 const memoized = memoize(expensiveFunction);
 console.log(memoized()); // Una única llamada // 3.1415
@@ -25,6 +28,7 @@ console.log(memoized()); // 3.1415
 // ## Apartado B
 
 // ¿Podrías hacerlo en una sola línea?
+//*No se simplificar más la función memoize
 
 // ## Apartado C
 
@@ -39,12 +43,24 @@ const repeatText = (repetitions: number, text: string): string => (
   count++, `${text} `.repeat(repetitions).trim()
 );
 
-// const memoize2 = ¿..?;
+const memoize2 = <T>(
+  funcionAGuardar: (arg1: number, arg2: string) => T
+): ((arg1: number, arg2: string) => T) => {
+  let diccionario = {};
+  return (...args: [number, string]) => {
+    const clave = args.join('_');
+    if (diccionario.hasOwnProperty(clave)) {
+      return diccionario[clave];
+    }
+    const result = funcionAGuardar(...args);
+    diccionario[clave] = result;
+    return result;
+  };
+};
 
-// const memoizedGreet = memoize2(repeatText);
-
-// console.log(memoizedGreet(1, 'pam')); // pam
-// console.log(memoizedGreet(3, 'chun')); // chun chun chun
-// console.log(memoizedGreet(1, 'pam')); // pam
-// console.log(memoizedGreet(3, 'chun')); // chun chun chun
-// console.log(count); // 2
+const memoizedGreet = memoize2(repeatText);
+console.log(memoizedGreet(1, 'pam')); // pam
+console.log(memoizedGreet(3, 'chun')); // chun chun chun
+console.log(memoizedGreet(1, 'pam')); // pam
+console.log(memoizedGreet(3, 'chun')); // chun chun chun
+console.log(count); // 2
