@@ -1,0 +1,19 @@
+$color: rgb(154, 30, 225);
+
+h1 {
+  color: #fff;
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.background {
+  background-color: $color;
+}
+
+.color {
+  color: $color;
+}

@@ -1,0 +1,23 @@
+{
+  "name": "basico-vite",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "prebuild": "npm run type-check",
+    "build": "vite build",
+    "type-check": "tsc --noEmit",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.63.2",
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9",
+    "vite-plugin-checker": "^0.6.0"
+  }
+}
