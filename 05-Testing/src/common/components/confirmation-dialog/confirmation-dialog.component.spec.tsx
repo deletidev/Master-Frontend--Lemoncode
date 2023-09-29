@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-  render,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import useEvent from '@testing-library/user-event';
 import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 
 describe('./common/components/confirmation-dialog', () => {
-  it('should be in the document if prop is open true', () => {
+  it('should be in the document if props isOpen is true', () => {
     // Arrange
     const props = {
       isOpen: true,
@@ -31,7 +27,7 @@ describe('./common/components/confirmation-dialog', () => {
     expect(confirmationDialog).toBeInTheDocument();
   });
 
-  it('shouldn´t be in the document if prop is open true', () => {
+  it('should not be in the document if props isOpen is false', () => {
     // Arrange
     const props = {
       isOpen: false,
@@ -54,30 +50,7 @@ describe('./common/components/confirmation-dialog', () => {
     expect(confirmationDialog).not.toBeInTheDocument();
   });
 
-  it('shouldn´t be in the document if prop is open true', () => {
-    // Arrange
-    const props = {
-      isOpen: false,
-      onAccept: () => {},
-      onClose: () => {},
-      title: '',
-      labels: {
-        closeButton: '',
-        acceptButton: '',
-      },
-      children: '',
-    };
-
-    // Act
-    render(<ConfirmationDialogComponent {...props} />);
-
-    const confirmationDialog = screen.queryByRole('dialog');
-
-    // Assert
-    expect(confirmationDialog).not.toBeInTheDocument();
-  });
-
-  it('shouldn be in the document with title', () => {
+  it('title should be in the document and have the same text as props.tittle', () => {
     // Arrange
     const props = {
       isOpen: true,
@@ -98,33 +71,13 @@ describe('./common/components/confirmation-dialog', () => {
       level: 2,
       name: props.title,
     });
+
     // Assert
     expect(titleConfirmationDialog).toBeInTheDocument();
+    expect(titleConfirmationDialog).toHaveTextContent('Hola');
   });
 
-  it('should be two buttons in the document', () => {
-    // Arrange
-    const props = {
-      isOpen: true,
-      onAccept: () => {},
-      onClose: () => {},
-      title: 'Hola',
-      labels: {
-        closeButton: '',
-        acceptButton: '',
-      },
-      children: '',
-    };
-
-    // Act
-    render(<ConfirmationDialogComponent {...props} />);
-
-    const buttonsConfirmationDialog = screen.getAllByRole('button');
-    // Assert
-    expect(buttonsConfirmationDialog).toHaveLength(2);
-  });
-
-  it('should be two buttons in the document with the name based on the prop tag', () => {
+  it('should be two buttons in the document with the name based on props.label', () => {
     // Arrange
     const props = {
       isOpen: true,
@@ -138,6 +91,8 @@ describe('./common/components/confirmation-dialog', () => {
     // Act
     render(<ConfirmationDialogComponent {...props} />);
 
+    const buttonsConfirmationDialog = screen.getAllByRole('button');
+
     const closeButton = screen.getByRole('button', {
       name: props.labels.closeButton,
     });
@@ -146,6 +101,7 @@ describe('./common/components/confirmation-dialog', () => {
     });
 
     // Assert
+    expect(buttonsConfirmationDialog).toHaveLength(2);
     expect(closeButton).toHaveTextContent('Close');
     expect(acceptButton).toHaveTextContent('Accept');
   });
@@ -174,7 +130,7 @@ describe('./common/components/confirmation-dialog', () => {
     expect(props.onClose).toHaveBeenCalled();
   });
 
-  it('OnClose should be called when close button is clicked, and OnAccept shouldn´t be called', async () => {
+  it('onClose should be called when close button is clicked, and OnAccept should not be called', async () => {
     // Arrange
     const props = {
       isOpen: true,
