@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import useEvent from '@testing-library/user-event';
+
 import { SpinnerComponent } from './spinner.component';
 import * as tracker from 'react-promise-tracker/lib/trackerHook';
 
