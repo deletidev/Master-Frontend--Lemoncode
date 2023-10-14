@@ -46,7 +46,7 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
         searchPlaceholder: 'Buscar empleado',
         createButton: 'Nuevo empleado',
         deleteTitle: 'Eliminar Empleado',
-        deleteContent: props => contentRender(props),
+        deleteContent: (props) => contentRender(props),
         closeButton: 'Cancelar',
         acceptButton: 'Aceptar',
       }}
