@@ -4,7 +4,6 @@ import { mockEmployeeList } from './employee-list.mock-data';
 let employeeList = [...mockEmployeeList];
 
 export const getEmployeeList = async (): Promise<Employee[]> => {
-  console.log('hola');
   return employeeList;
 };
 

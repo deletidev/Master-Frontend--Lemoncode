@@ -7,22 +7,6 @@ describe('Employee-list specs', () => {
 
   it('should fetch employee list and show it in screen when visit /employees url', () => {
     //Arrange
-    const employees: Employee[] = [
-      {
-        id: '1',
-        isActive: true,
-        name: 'Daniel Perez',
-        email: 'daniel.perez@empresa.com',
-        lastDateIncurred: '02/02/2020',
-      },
-      {
-        id: '2',
-        isActive: true,
-        name: 'Jose Gomez',
-        email: 'jose.gomez@empresa.com',
-        lastDateIncurred: '05/02/2020',
-      },
-    ];
 
     //Act
     cy.visit('/employees');
@@ -42,7 +26,6 @@ describe('Employee-list specs', () => {
     cy.url().should('equal', 'http://localhost:8080/#/employees/1');
   });
 
-  //*me estoy liando porque muchas de estas cosas las miraria en un test de componente no?
   it('should show a dialog with a message when click on delete employee', () => {
     //Arrange
 
@@ -87,5 +70,6 @@ describe('Employee-list specs', () => {
 
     //Assert
     cy.findByPlaceholderText('Buscar empleado').should('have.value', search);
+    cy.findAllByTestId('row-body').should('have.length', 2);
   });
 });
