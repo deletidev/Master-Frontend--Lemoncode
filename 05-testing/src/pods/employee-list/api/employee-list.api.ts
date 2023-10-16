@@ -8,6 +8,6 @@ export const getEmployeeList = async (): Promise<Employee[]> => {
 };
 
 export const deleteEmployee = async (id: string): Promise<boolean> => {
-  employeeList = employeeList.filter(e => e.id !== id);
+  employeeList = employeeList.filter((e) => e.id !== id);
   return true;
 };
