@@ -1,0 +1,25 @@
+.neumorphism {
+  border-radius: var(--border-radius);
+  background: var(--background-color);
+  box-shadow: 8px 8px 16px #1e1116, -8px -8px 16px #3e232c;
+}
+.neumorphism-hov {
+  border-radius: var(--border-radius);
+  background: var(--background-color);
+  box-shadow: 8px 8px 16px #1e1116, -8px -8px 16px #3e232c,
+    inset 0px 0px 0px #1e1116, inset 0px 0px 0px #3e232c;
+  transition: all 0.2s ease;
+  &:hover,
+  &:active {
+    box-shadow: 0px 0px 0px #1e1116, 0px 0px 0px #3e232c,
+      inset 8px 8px 16px #1e1116, inset -8px -8px 16px #3e232c;
+  }
+}
+.neumorphism-inner {
+  border-radius: var(--border-radius);
+  background: var(--background-color);
+
+  box-shadow: 0px 0px 0px #1e1116, 0px 0px 0px #3e232c,
+    inset 8px 8px 16px #1e1116, inset -8px -8px 16px #3e232c;
+}
+// box-shadow: 20px 20px 60px #120a0d, -20px -20px 60px #4a2a35;
