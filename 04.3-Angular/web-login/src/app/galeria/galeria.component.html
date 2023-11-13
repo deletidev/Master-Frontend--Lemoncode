@@ -1,100 +1,102 @@
-<mat-card class="container">
-  <mat-card-content class="card"
-    ><div class="card__image">
-      <img
-        src="{{ selectedImg.src }}"
-        alt="{{ selectedImg.title }}"
-        width="{{ selectedImg.width }}"
-        height="{{ selectedImg.height }}"
-      />
-      <button
-        type="button"
-        class="card__play"
-        mat-raised-button
-        color="warn"
-        (click)="play()"
-        *ngIf="!sliderActivated"
-      >
-        play
-      </button>
-      <button
-        type="button"
-        class="card__play"
-        mat-raised-button
-        color="warn"
-        (click)="stop()"
-        *ngIf="sliderActivated"
-      >
-        stop
-      </button>
-    </div>
-    <div class="card__controler">
-      <div>
+<div class="container">
+  <mat-card class="card__container">
+    <mat-card-content class="card"
+      ><div class="card__image">
+        <img
+          src="{{ selectedImg.src }}"
+          alt="{{ selectedImg.title }}"
+          width="{{ selectedImg.width }}"
+          height="{{ selectedImg.height }}"
+        />
         <button
           type="button"
+          class="card__play"
           mat-raised-button
-          color="primary"
-          [disabled]="this.selectedImg.id - 1 === 0 ? true : false"
-          (click)="prev()"
+          color="warn"
+          (click)="play()"
+          *ngIf="!sliderActivated"
         >
-          anterior
+          play
         </button>
         <button
           type="button"
+          class="card__play"
           mat-raised-button
-          color="primary"
-          (click)="next()"
-          [disabled]="this.selectedImg.id === imgArray.length ? true : false"
+          color="warn"
+          (click)="stop()"
+          *ngIf="sliderActivated"
         >
-          siguiente
+          stop
         </button>
       </div>
-      <div>
+      <div class="card__controler">
+        <div>
+          <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            [disabled]="this.selectedImg.id - 1 === 0 ? true : false"
+            (click)="prev()"
+          >
+            anterior
+          </button>
+          <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            (click)="next()"
+            [disabled]="this.selectedImg.id === imgArray.length ? true : false"
+          >
+            siguiente
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            mat-raised-button
+            color="accent"
+            (click)="reduce()"
+          >
+            disminuir
+          </button>
+          <button
+            type="button"
+            mat-raised-button
+            color="accent"
+            (click)="expand()"
+          >
+            aumentar
+          </button>
+        </div>
+      </div>
+      <div class="card__carrousel">
         <button
           type="button"
           mat-raised-button
           color="accent"
-          (click)="reduce()"
+          [disabled]="numero === 0 ? true : false"
+          (click)="prevPage()"
         >
-          disminuir
+          &lt; page
         </button>
+        <img
+          *ngFor="let item of imgArray | slice : numero : numeromas"
+          class="card__miniature"
+          src="{{ item.src }}"
+          alt="{{ item.title }}"
+          [ngClass]="item.id === selectedImg.id ? 'selected' : ''"
+          (click)="updateSelected(item.id - 1)"
+        />
         <button
           type="button"
           mat-raised-button
           color="accent"
-          (click)="expand()"
+          (click)="nextPage()"
+          [disabled]="numeromas === imgArray.length ? true : false"
         >
-          aumentar
+          page &gt;
         </button>
       </div>
-    </div>
-    <div class="card__carrousel">
-      <button
-        type="button"
-        mat-raised-button
-        color="accent"
-        [disabled]="numero === 0 ? true : false"
-        (click)="prevPage()"
-      >
-        &lt; page
-      </button>
-      <img
-        *ngFor="let item of imgArray | slice : numero : numeromas"
-        class="card__miniature"
-        src="{{ item.src }}"
-        alt="{{ item.title }}"
-        [ngClass]="item.id === selectedImg.id ? 'selected' : ''"
-        (click)="updateSelected(item.id - 1)"
-      />
-      <button
-        type="button"
-        mat-raised-button
-        color="accent"
-        (click)="nextPage()"
-        [disabled]="numeromas === imgArray.length ? true : false"
-      >
-        page &gt;
-      </button>
-    </div>
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>
