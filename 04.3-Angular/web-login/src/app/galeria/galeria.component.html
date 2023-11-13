@@ -1,40 +1,15 @@
 <mat-card class="container">
   <mat-card-content class="card"
-    ><div class="image">
+    ><div class="card__image">
       <img
         src="{{ selectedImg.src }}"
         alt="{{ selectedImg.title }}"
         width="{{ selectedImg.width }}"
         height="{{ selectedImg.height }}"
       />
-    </div>
-    <div>
       <button
         type="button"
-        mat-raised-button
-        color="primary"
-        [disabled]="this.selectedImg.id - 1 === 0 ? true : false"
-        (click)="prev()"
-      >
-        anterior
-      </button>
-      <button
-        type="button"
-        mat-raised-button
-        color="primary"
-        (click)="next()"
-        [disabled]="this.selectedImg.id === imgArray.length ? true : false"
-      >
-        siguiente
-      </button>
-      <button type="button" mat-raised-button color="accent" (click)="reduce()">
-        disminuir
-      </button>
-      <button type="button" mat-raised-button color="accent" (click)="expand()">
-        aumentar
-      </button>
-      <button
-        type="button"
+        class="card__play"
         mat-raised-button
         color="warn"
         (click)="play()"
@@ -44,6 +19,7 @@
       </button>
       <button
         type="button"
+        class="card__play"
         mat-raised-button
         color="warn"
         (click)="stop()"
@@ -52,7 +28,47 @@
         stop
       </button>
     </div>
-    <div class="image-group">
+    <div class="card__controler">
+      <div>
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          [disabled]="this.selectedImg.id - 1 === 0 ? true : false"
+          (click)="prev()"
+        >
+          anterior
+        </button>
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="next()"
+          [disabled]="this.selectedImg.id === imgArray.length ? true : false"
+        >
+          siguiente
+        </button>
+      </div>
+      <div>
+        <button
+          type="button"
+          mat-raised-button
+          color="accent"
+          (click)="reduce()"
+        >
+          disminuir
+        </button>
+        <button
+          type="button"
+          mat-raised-button
+          color="accent"
+          (click)="expand()"
+        >
+          aumentar
+        </button>
+      </div>
+    </div>
+    <div class="card__carrousel">
       <button
         type="button"
         mat-raised-button
@@ -60,11 +76,11 @@
         [disabled]="numero === 0 ? true : false"
         (click)="prevPage()"
       >
-        prev page
+        &lt; page
       </button>
       <img
         *ngFor="let item of imgArray | slice : numero : numeromas"
-        class="image-group__img"
+        class="card__miniature"
         src="{{ item.src }}"
         alt="{{ item.title }}"
         [ngClass]="item.id === selectedImg.id ? 'selected' : ''"
@@ -77,7 +93,7 @@
         (click)="nextPage()"
         [disabled]="numeromas === imgArray.length ? true : false"
       >
-        next page
+        page &gt;
       </button>
     </div>
   </mat-card-content>

@@ -2,7 +2,6 @@ import { CanActivateFn } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
-//?esto es asi???
 export const authGuard: CanActivateFn = (route, state) => {
   const ver = new AuthService();
   const navegar = new Router();

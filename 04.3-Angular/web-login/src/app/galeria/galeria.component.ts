@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 interface Img {
   id: number;
@@ -12,6 +12,9 @@ interface SelectedImg {
   width: number;
   height: number;
 }
+
+type LayoutType = 'landscape' | 'smallScreen' | 'default';
+
 const imgArray: Img[] = [
   {
     id: 1,
@@ -84,6 +87,9 @@ export class GaleriaComponent {
   sliderActivated = false;
   //?no se tiparlo
   nIntervId: any;
+  constructor() {
+    this.resizeDiv();
+  }
 
   updateSelected(index: number) {
     this.selectedImg.id = imgArray[index].id;
@@ -145,5 +151,31 @@ export class GaleriaComponent {
   prevPage() {
     this.numeromas = this.numero;
     this.numero = this.numero - 3;
+  }
+  @HostListener('window:resize')
+  resizeDiv(): void {
+    const baseWidth = window.innerWidth;
+    const baseHeight = window.innerHeight;
+    let layoutType: LayoutType = 'default';
+
+    if (baseWidth > baseHeight) {
+      layoutType = 'landscape';
+    } else if (baseWidth < 600) {
+      layoutType = 'smallScreen';
+    }
+
+    switch (layoutType) {
+      case 'landscape':
+        this.selectedImg.width = baseWidth * 0.6;
+        this.selectedImg.height = baseHeight * 0.5;
+        break;
+      case 'smallScreen':
+        this.selectedImg.width = baseWidth * 0.9;
+        this.selectedImg.height = baseHeight * 0.25;
+        break;
+      default:
+        this.selectedImg.width = baseWidth * 0.6;
+        this.selectedImg.height = baseHeight * 0.3;
+    }
   }
 }

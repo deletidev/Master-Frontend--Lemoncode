@@ -2,31 +2,56 @@
     width: fit-content
     margin-right: auto
     margin-left: auto
+    width: 100%
+    overflow-x: scroll
 
 .card
     display: flex
     flex-direction: column
+    align-items: center
     gap:16px
 
-.image
-    // width: 800px
-    // height: 300px
-    img
-        object-fit: cover
+    &__image
+        position: relative
+        img
+            object-fit: cover
+            display: block
 
-.image-group
-    display: flex
-    align-items: center
-    justify-content: center
-    gap: 16px
-    &__img
-        width: 200px
-        height: 200px
+
+    &__controler
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        gap: 10px
+        margin-bottom: 20px
+        & button
+            width: 105px
+
+        & > div
+            display: flex
+            gap: 10px
+
+    &__carrousel
+        display: grid
+        grid-template-columns: auto repeat(3, 1fr) auto
+        align-items: center
+        justify-content: center
+        gap: 16px
+
+    &__miniature
+        width: 100%
+        height: 100%
+        max-width: 200px
+        max-height: 200px
         object-fit: cover
         border: 1.5px solid transparent
         transition: border 0.5s ease
         cursor: pointer
         // aspect-ratio: 4/3
+    &__play
+        position: absolute
+        right: 4.5px
+        top: 5px
 
 .selected
     border: 1.5px solid #69f0ae

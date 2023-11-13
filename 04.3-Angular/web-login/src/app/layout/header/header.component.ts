@@ -13,8 +13,6 @@ export class HeaderComponent {
     return this.authservice.getUsername();
   }
   get login(): boolean {
-    console.log('hola');
-    // this.cambio = this.authservice.isLogged();
     return this.authservice.isLogged();
   }
 
