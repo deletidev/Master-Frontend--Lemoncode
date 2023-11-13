@@ -81,6 +81,7 @@ export class GaleriaComponent {
   numero = 0;
   numeromas = 3;
 
+  sliderActivated = false;
   //?no se tiparlo
   nIntervId: any;
 
@@ -112,17 +113,20 @@ export class GaleriaComponent {
     this.calcNumber();
   }
 
-  //?raro
   play() {
+    this.sliderActivated = true;
     this.nIntervId = setInterval(() => {
-      this.next();
       if (this.selectedImg.id === imgArray.length) {
-        clearInterval(this.nIntervId);
+        this.updateSelected(0);
+        this.calcNumber();
+      } else {
+        this.next();
       }
-    }, 1000);
+    }, 2000);
   }
 
   stop() {
+    this.sliderActivated = false;
     clearInterval(this.nIntervId);
   }
 

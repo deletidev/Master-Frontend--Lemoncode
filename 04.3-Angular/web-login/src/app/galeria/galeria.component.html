@@ -33,10 +33,22 @@
       <button type="button" mat-raised-button color="accent" (click)="expand()">
         aumentar
       </button>
-      <button type="button" mat-raised-button color="warn" (click)="play()">
+      <button
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="play()"
+        *ngIf="!sliderActivated"
+      >
         play
       </button>
-      <button type="button" mat-raised-button color="warn" (click)="stop()">
+      <button
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="stop()"
+        *ngIf="sliderActivated"
+      >
         stop
       </button>
     </div>
