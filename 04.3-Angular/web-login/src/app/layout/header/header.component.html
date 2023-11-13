@@ -1,0 +1,14 @@
+<header>
+  <mat-toolbar color="primary" class="header">
+    <img src="assets/logo.svg" alt="logo de la empresa" class="logo" />
+    <span>My Application</span>
+    <div class="container__if" *ngIf="login; else loggedOut">
+      <app-nav-user></app-nav-user>
+      <div class="container__user">
+        <p>Hola {{ getUsername }}</p>
+        <button mat-raised-button (click)="logout()">Log out</button>
+      </div>
+    </div>
+    <ng-template #loggedOut><app-nav></app-nav></ng-template>
+  </mat-toolbar>
+</header>

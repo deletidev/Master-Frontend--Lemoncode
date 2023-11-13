@@ -1,0 +1,32 @@
+.container
+    width: fit-content
+    margin-right: auto
+    margin-left: auto
+
+.card
+    display: flex
+    flex-direction: column
+    gap:16px
+
+.image
+    // width: 800px
+    // height: 300px
+    img
+        object-fit: cover
+
+.image-group
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 16px
+    &__img
+        width: 200px
+        height: 200px
+        object-fit: cover
+        border: 1.5px solid transparent
+        transition: border 0.5s ease
+        cursor: pointer
+        // aspect-ratio: 4/3
+
+.selected
+    border: 1.5px solid #69f0ae

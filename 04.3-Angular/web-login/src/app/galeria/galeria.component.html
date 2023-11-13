@@ -1,0 +1,72 @@
+<mat-card class="container">
+  <mat-card-content class="card"
+    ><div class="image">
+      <img
+        src="{{ selectedImg.src }}"
+        alt="{{ selectedImg.title }}"
+        width="{{ selectedImg.width }}"
+        height="{{ selectedImg.height }}"
+      />
+    </div>
+    <div>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        [disabled]="this.selectedImg.id - 1 === 0 ? true : false"
+        (click)="prev()"
+      >
+        anterior
+      </button>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="next()"
+        [disabled]="this.selectedImg.id === imgArray.length ? true : false"
+      >
+        siguiente
+      </button>
+      <button type="button" mat-raised-button color="accent" (click)="reduce()">
+        disminuir
+      </button>
+      <button type="button" mat-raised-button color="accent" (click)="expand()">
+        aumentar
+      </button>
+      <button type="button" mat-raised-button color="warn" (click)="play()">
+        play
+      </button>
+      <button type="button" mat-raised-button color="warn" (click)="stop()">
+        stop
+      </button>
+    </div>
+    <div class="image-group">
+      <button
+        type="button"
+        mat-raised-button
+        color="accent"
+        [disabled]="numero === 0 ? true : false"
+        (click)="prevPage()"
+      >
+        prev page
+      </button>
+      <img
+        *ngFor="let item of imgArray | slice : numero : numeromas"
+        class="image-group__img"
+        src="{{ item.src }}"
+        alt="{{ item.title }}"
+        [ngClass]="item.id === selectedImg.id ? 'selected' : ''"
+        (click)="updateSelected(item.id - 1)"
+      />
+      <button
+        type="button"
+        mat-raised-button
+        color="accent"
+        (click)="nextPage()"
+        [disabled]="numeromas === imgArray.length ? true : false"
+      >
+        next page
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
