@@ -20,15 +20,16 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { AboutComponent } from './about/about.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { GaleriaComponent } from './galeria/galeria.component';
-import { CrudComponent } from './crud/crud.component';
-import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AboutComponent } from './pages/about/about.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { GaleriaComponent } from './pages/galeria/galeria.component';
+import { CrudComponent } from './pages/crud/crud.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { NavUserComponent } from './layout/nav-user/nav-user.component';
 import { NavComponent } from './layout/nav/nav.component';
+import { RotateDirective } from './directives/rotate.directive';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { NavComponent } from './layout/nav/nav.component';
     ProfileComponent,
     NavUserComponent,
     NavComponent,
+    RotateDirective,
   ],
   imports: [
     BrowserModule,

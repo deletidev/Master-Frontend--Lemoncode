@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, delay, of } from 'rxjs';
 // import { Observable } from 'rxjs';
 
 interface AuthInfo {
@@ -10,7 +11,7 @@ interface AuthInfo {
   providedIn: 'root',
 })
 export class AuthService {
-  private authInfo: AuthInfo = { isAuthenticated: false };
+  authInfo: AuthInfo = { isAuthenticated: false };
 
   constructor() {
     this.authInfo = JSON.parse(localStorage.getItem('authInfo') || '{}') || {
@@ -18,23 +19,27 @@ export class AuthService {
     };
   }
 
-  login(user: { username: string; password: string }): boolean {
+  login(user: { username: string; password: string }): Observable<boolean> {
     if (
       user.username === 'master@lemoncode.net' &&
       user.password === '12345678'
     ) {
-      this.authInfo = {
-        isAuthenticated: true,
-        username: user.username,
-      };
-      localStorage.setItem('authInfo', JSON.stringify(this.authInfo));
-      return this.authInfo.isAuthenticated;
+      // this.authInfo = {
+      //   isAuthenticated: true,
+      //   username: user.username,
+      // };
+      // localStorage.setItem('authInfo', JSON.stringify(this.authInfo));
+
+      return of(true).pipe(delay(2000));
     } else {
-      this.authInfo = {
-        isAuthenticated: false,
-      };
-      localStorage.setItem('authInfo', JSON.stringify(this.authInfo));
-      return this.authInfo.isAuthenticated;
+      // setTimeout(() => {
+      //   this.authInfo = {
+      //     isAuthenticated: false,
+      //   };
+      //   localStorage.setItem('authInfo', JSON.stringify(this.authInfo));
+      // }, 2000);
+
+      return of(false).pipe(delay(2000));
     }
   }
 
