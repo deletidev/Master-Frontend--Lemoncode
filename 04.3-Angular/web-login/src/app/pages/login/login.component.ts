@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -25,14 +26,17 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar
   ) {
     this.loginForm = this.fb.group({
       username: this.nameControl,
       password: this.passwordControl,
     });
   }
-
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
   submitForm(event: Event) {
     event.preventDefault();
     this.cargando = true;
@@ -52,6 +56,9 @@ export class LoginComponent {
           );
         } else {
           this.loginFailed = true;
+          this._snackBar.open(
+            'Usuario: master@lemoncode.net -- Contraseña: 12345678'
+          );
         }
       });
     }
