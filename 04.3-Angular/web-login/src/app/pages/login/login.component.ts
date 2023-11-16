@@ -35,8 +35,21 @@ export class LoginComponent {
     });
   }
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+    this._snackBar.open(message, action, {
+      verticalPosition: 'top',
+    });
   }
+
+  snackbar() {
+    this._snackBar.open(
+      'Usuario: master@lemoncode.net -- Contraseña: 12345678',
+      '',
+      {
+        verticalPosition: 'top',
+      }
+    );
+  }
+
   submitForm(event: Event) {
     event.preventDefault();
     this.cargando = true;
@@ -56,9 +69,7 @@ export class LoginComponent {
           );
         } else {
           this.loginFailed = true;
-          this._snackBar.open(
-            'Usuario: master@lemoncode.net -- Contraseña: 12345678'
-          );
+          this.snackbar();
         }
       });
     }
